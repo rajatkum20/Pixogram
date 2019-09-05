@@ -22,6 +22,8 @@ public class UploadMedia {
 	@Column(name = "uid")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	
 public UploadMedia() {
 		
 	}
@@ -107,14 +109,13 @@ public UploadMedia() {
 		this.pic = pic;
 	}
 
+
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 	public String getDescription() {
 		return Description;
 	}

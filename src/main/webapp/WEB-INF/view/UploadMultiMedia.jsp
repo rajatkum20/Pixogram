@@ -156,25 +156,8 @@ margin-top:-110px;
                   <button type="button" class="btn btn-secondary">Brightness</button>
                   <button type="button" class="btn btn-secondary">Contrast</button>
           </div>
-          <hr>
-          <label for="browse"><b>Browse</b></label>
-            <input type="file" name="file" class="btn btn-secondary" style="margin-right: 40px;margin-left: 60px;"><br>
-          <label for="title"><b>Title</b></label>
-            <form:input type="text" placeholder="Title" path="title"></form:input>
-            <label for="description"><b> Description</b></label>
-            
-            <form:input type="text" placeholder="Description" path="description"></form:input>
-            
-            <label for="tags" ><b>Tags</b></label>
-            <input type="text" placeholder="Tags" name="tags" required>
-           
-            <label for="effects"><b>Effects</b></label>
-            <div class="btn-group"  role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-secondary"style="margin-left: 40px;">Sepia</button>
-                  <button type="button" class="btn btn-secondary">Grey</button>
-                  <button type="button" class="btn btn-secondary">Brightness</button>
-                  <button type="button" class="btn btn-secondary">Contrast</button>
-        </div>
+          
+       
          </div>
       
         </div>
