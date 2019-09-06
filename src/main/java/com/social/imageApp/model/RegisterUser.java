@@ -46,13 +46,13 @@ public  class RegisterUser  {
 	@OneToMany(mappedBy= "registerUser" ,cascade=CascadeType.PERSIST)
 	private Set<UploadMedia> uploadmedia;
 	
-	 @ManyToMany(fetch = FetchType.EAGER)
+	 @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
 	    @JoinTable(name = "relation",
 	                joinColumns = @JoinColumn(name = "user_id"),
 	                inverseJoinColumns = @JoinColumn(name = "following_id"))
 	    private Set<RegisterUser> following;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
 	@JoinTable(name="block",
 	joinColumns = @JoinColumn(name="user_id"),
 	inverseJoinColumns = @JoinColumn(name="blocked_id"))

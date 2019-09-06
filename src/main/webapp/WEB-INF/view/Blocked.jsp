@@ -126,63 +126,13 @@ padding: 3em 5em 3em 3em;
   <div class="card-body"style="width:300px;height:150px;">
     
   </div>
-  <div class="card-footer"><button type="button" class="btn btn-secondary btn-lg btn-block">${d.value}</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block">UnBlock</button></div>
+  <div class="card-footer"><button type="button" class="btn btn-secondary btn-lg btn-block">${d.uname}</button></div>
+<a href="<c:url value='/unblock/${d.id}'/>"><button type="button" class="btn btn-secondary">Unblock</button></a>
 </div>
 
 </c:forEach></div>
-<!--  
-<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;margin-left: 10%">
-  
-  <div class="card-body"style="width:300px;height:150px;">
-    
-  </div>
-  <div class="card-footer">
-    <button type="button" class="btn btn-secondary btn-lg btn-block">@user</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block">Unfollow</button>
-  </div>
-</div>
 
 
-
-<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;margin-left: 10%">
-  
-  <div class="card-body"style="width:300px;height:150px;">
-    
-  </div>
-  <div class="card-footer"><button type="button" class="btn btn-secondary btn-lg btn-block">@user</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block">Unfollow</button>                                       
-</div>
-</div>
-
-
-
-<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;margin-left: 10%">
-  
-  <div class="card-body"style="width:300px;height:150px;">
-    
-  </div>
-  <div class="card-footer"><button type="button" class="btn btn-secondary btn-lg btn-block">@user</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block">Unfollow</button></div>
-</div>
-
-<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;margin-left: 10%">
-  
-  <div class="card-body"style="width:300px;height:150px;">
-    
-  </div>
-  <div class="card-footer"><button type="button" class="btn btn-secondary btn-lg btn-block">@user</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block">Unfollow</button></div>
-</div>
-
-<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;margin-left: 10%">
-  
-  <div class="card-body"style="width:300px;height:150px;">
-    
-  </div>
-  <div class="card-footer"><button type="button" class="btn btn-secondary btn-lg btn-block">@user</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block">Unfollow</button></div>
-</div></div>-->
 </div>
 </body>
 </html>

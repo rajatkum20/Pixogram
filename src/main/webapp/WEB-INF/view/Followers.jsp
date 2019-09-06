@@ -33,7 +33,7 @@
     height=150px;><h3 style="margin-left: 150px;margin-top: -70px; ">${username}</h3>
         </div>
         <div class="btn-group" style="float: right;"role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary">FOLLOWERS</button>
+           
             <button type="button" class="btn btn-secondary">FOLLOWINGS</button>
             
           </div>
@@ -45,25 +45,19 @@
         <c:forEach var="d" items="${data}">
           <div class="card text-white bg-secondary mb-3" style="max-width: 14rem;margin-left: 10%;">
   <div class="card-header">
-    <i class="material-icons">
-thumb_up_alt
-</i>&nbsp;&nbsp;&nbsp;<i class="material-icons">
-thumb_down_alt
-</i>
-<i class="material-icons" style="float:right;">
-mode_comment
-</i></div>
+
+</div>
   <div class="card-body"style="width:300px;height:150px;">
     
   </div>
-   <p>${d}</p>
+   <p><center>${d.uname}</center></p>
    
-     <a href="<c:url value='/block/${d}'/>"><button type="button" class="btn btn-secondary">Block</button></a>
+     
   <div class="card-footer"><div class="btn-group" role="group" aria-label="Basic example" style="margin-left: 4%;">
  
- <%--  <button type="button" class="btn btn-secondary"><a href="<c:url value='/followers/${d.uname}'/>">Follow</a></button> --%>
-
-  <a href="/unfollow"><button type="button" class="btn btn-secondary">Unfollow</button></a>
+ 
+<a href="<c:url value='/block/${d.uname}'/>"><button type="button" class="btn btn-secondary">Block</button></a>
+  <a href="<c:url value='/unfollow/${d.id}'/>"><button type="button" class="btn btn-secondary">Unfollow</button></a>
   
 </div></div>
 </div></c:forEach></div></div>

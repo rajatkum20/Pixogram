@@ -11,10 +11,14 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,9 +33,12 @@ public class BlockedController {
 	@Autowired
 	private UserDao userDao;
 	
-	
 	Optional<RegisterUser> ll ;
+	
+	 Set<Long> BlockedList=new HashSet<Long>();
 	final Set<String>userBlockedList=new HashSet<String>();
+	
+	@ModelAttribute
 	@RequestMapping("block/{username1}") 
 	public ModelAndView block(HttpSession session, @PathVariable("username1")String username1) {
 		ModelAndView mav = new ModelAndView();
@@ -44,18 +51,41 @@ public class BlockedController {
           
           loggedInUser.getBlocked().add(user.get());
           userDao.save(loggedInUser);
-          Set<Long> blockedIdList=userDao.findBlockUsers(loggedin);
+          BlockedList= userDao.findBlockUsers(loggedin);         
           
-          Iterator i= blockedIdList.iterator();
-         	while(i.hasNext())  
-         		{  
-         		ll=userDao.findById(((BigInteger)i.next()).longValue());        
-         		userBlockedList.add(ll.get().getUname());
-         		}
-		mav.addObject("blocklist", userBlockedList);
-		return new ModelAndView("redirect:/block");
+          List<RegisterUser>usersBlocked=userDao.findAllById(BlockedList);
+          mav.addObject("blocklist", usersBlocked);
+          return new ModelAndView("redirect:/block");
 	}
 	
-
+	@ModelAttribute
+	@GetMapping("/block")
+	public ModelAndView blockedUser(HttpServletRequest request,HttpServletResponse res,HttpSession session)
+	{
+		ModelAndView mav=new ModelAndView();
+		String username=(String)session.getAttribute("username");
+		RegisterUser loggedInUser=userDao.findByUname(username); 
+		  Long loggedin=loggedInUser.getId();
+		  BlockedList= userDao.findBlockUsers(loggedin);
+		  List<RegisterUser>usersBlocked=userDao.findAllById(BlockedList);
+		  
+		mav.addObject("username",username);
+		mav.addObject("blocklist",usersBlocked);
+		mav.setViewName("Blocked");
+		return mav;
+	}
+	@GetMapping("/unblock/{id}")
+	public ModelAndView unblock(@PathVariable("id")Long id,HttpSession session)
+	{
+		ModelAndView mav = new ModelAndView();
+        String username=(String)session.getAttribute("username"); //getting username of looged in user
+        RegisterUser loggedInUser=userDao.findByUname(username); //geetings details using username
+        Long loggedin=loggedInUser.getId();		//gettingIdofLoggedUSer
+        Optional<RegisterUser> user=userDao.findById(id);
+        loggedInUser.getBlocked().remove(user.get());
+        userDao.save(loggedInUser);
+		return new ModelAndView("redirect:/block");
+		
+	}
 	}
 

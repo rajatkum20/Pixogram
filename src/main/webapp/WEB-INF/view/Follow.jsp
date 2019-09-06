@@ -61,9 +61,7 @@ mode_comment
   <div class="card-footer"><div class="btn-group" role="group" aria-label="Basic example" style="margin-left: 4%;">
  
   <a href="<c:url value='/followers/${d.id}'/>"><button type="button" class="btn btn-secondary">Follow</button></a>
-
-  <a href="/unfollow"><button type="button" class="btn btn-secondary">Unfollow</button></a>
-  
+  <a href="<c:url value='/block/${d.uname}'/>"><button type="button" class="btn btn-secondary">Block</button></a>
 </div></div>
 </div></c:forEach></div>
 <!-- 
