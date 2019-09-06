@@ -19,6 +19,10 @@ public interface UserDao extends JpaRepository<RegisterUser, Long>{
 
 	@Query(value = "select r.following_id from relation r where r.user_id=:id",nativeQuery = true)
 	public Set findUsers(Long id);
+	
+	@Query(value = "select r.blocked_id from block r where r.user_id=:id",nativeQuery = true)
+	public Set findBlockUsers(Long id);
+	
 	public RegisterUser findByUnameAndPsw(String uname,String psw);
 	public RegisterUser findByUname(String username);
 	public List findAllById(Long id);

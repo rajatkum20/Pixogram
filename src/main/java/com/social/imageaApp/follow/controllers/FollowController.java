@@ -36,25 +36,21 @@ public class FollowController {
 
 	
 	Optional<RegisterUser> ll ;
-	 List<String>userNamelist=new ArrayList<String>();
+	final List<String>userNamelist=new ArrayList<String>();
 	HashMap<Long,String> userHash=new HashMap<Long, String>();
-	@RequestMapping("Follow")/*pg are filtered based on multiple filters */
+	@RequestMapping("Follow")
     public ModelAndView follow(HttpSession session) 
     {
 		
                     ModelAndView mav = new ModelAndView();
                     String username=(String)session.getAttribute("username");
-                    System.out.println("username is "+username);
                     List<RegisterUser> data=userDao.findAll();
-                    
-                    	
-		 			 
-             
-                    	Iterator<RegisterUser> iter=data.iterator();
+                   	Iterator<RegisterUser> iter=data.iterator();
+           
                     	while(iter.hasNext())
                     	{
-                    		RegisterUser upload=iter.next();
-                    		if(upload.getUname().contains(username))
+                    		RegisterUser currentuser=iter.next();
+                    		if(currentuser.getUname().contains(username))
                     		{
                     			iter.remove();
                     		}
@@ -67,46 +63,30 @@ public class FollowController {
                     return mav;                        
     
 }
-	@RequestMapping("/followers/{id}")/*pg are filtered based on multiple filters */
-    public ModelAndView followw(HttpSession session,@PathVariable("id") Long id) 
+	@RequestMapping("/followers/{id}")
+	public ModelAndView followw(HttpSession session,@PathVariable("id") Long id) 
     {
-		RegisterUser register=new RegisterUser();
-		
+
 	           		ModelAndView mav = new ModelAndView();
                     String username=(String)session.getAttribute("username");
-                    System.out.println("username is "+username);
                     RegisterUser loggedInUser=userDao.findByUname(username);
                     Long loggedin=loggedInUser.getId();
                     Optional<RegisterUser> user=userDao.findById(id);
                     loggedInUser.getFollowing().add(user.get());
                     userDao.save(loggedInUser);
-                    
-                 Set<Long> useridList= userDao.findUsers(loggedin);
-                 Iterator i= useridList.iterator();
+                   	Set<Long> useridList= userDao.findUsers(loggedin);
+                   	Iterator i= useridList.iterator();
               
-              while(i.hasNext())  
-              {  
-//              System.out.println(i.next());  
-ll=userDao.findById(((BigInteger)i.next()).longValue());
-              	 
-               
-              
-              userNamelist.add(ll.get().getUname());
-              }  
-              
-		 Iterator<Long> iter = null; 
-		 iter=useridList.iterator();
-		
-		 {
-		 	
-                	System.out.println(useridList+"User ID'size");  
-		 }
-                   	mav.addObject("data",userNamelist);
-                    
-                 
+                   	while(i.hasNext())  
+                   		{  
+                   		ll=userDao.findById(((BigInteger)i.next()).longValue());        
+                   		userNamelist.add(ll.get().getUname());
+                   		}  
+              	 Iterator<Long> iter = null; 
+              	 iter=useridList.iterator();
+              	 mav.addObject("data",userNamelist);
+                  
                     mav.setViewName("Followers");
-//                    return mav; 
-                   
 					return mav;
     
 
@@ -117,12 +97,7 @@ ll=userDao.findById(((BigInteger)i.next()).longValue());
 		System.out.println("Followers");
 		ModelAndView mav = new ModelAndView();
 		HttpSession mySession = request.getSession();
-		String username = (String) mySession.getAttribute("username");
-		System.out.println("username is "+username);
-		RegisterUser users=new RegisterUser();
-		
-		List<RegisterUser> foll =   userDao.findAll();
-		
+		String username = (String) mySession.getAttribute("username");		
 		mav.addObject("username", username);
 		mav.addObject("data",userNamelist);
 		mav.setViewName("Followers");

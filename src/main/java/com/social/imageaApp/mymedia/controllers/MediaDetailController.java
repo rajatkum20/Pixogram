@@ -28,11 +28,7 @@ public class MediaDetailController {
 		Optional<UploadMedia> photo=imageDao.findById(id);
 		
    	 	mav.addObject("photo",photo.get());
-		/*
-		 * String ownerUser=(String)session.getAttribute("ownerUser"); Owner
-		 * owner=homeservice.getOwnerByUser(ownerUser); int ownerid=owner.getU_id();
-		 * List<Booking> ownerList= bookserv.showOwnerBookingList(ownerid);
-		 */
+		
 		mav.setViewName("Media");
     	return mav;
     }

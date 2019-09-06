@@ -1,5 +1,6 @@
 package com.social.imageaApp.account.controllers;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,99 +28,34 @@ import com.social.imageaApp.dao.UserDao;
 public class BlockedController {
 	@Autowired
 	private UserDao userDao;
-
-//	HashMap<Long,List<String>> blocklist = new HashMap<Long, List<String>>();
-//	
-//	@RequestMapping("block/{username}") /* Gets the id of respective photo */
-//	public ModelAndView block(HttpSession session, @PathVariable("username")String username) {
-//		ModelAndView mav = new ModelAndView();
-//	
-//		;
-//		//List<RegisterUser> b =(List<RegisterUser>) userDao.findAllById(id);
-//		RegisterUser user=userDao.findByUname(username);
-//		RegisterUser currentUser=userDao.findByUname((String) session.getAttribute("username"));
-//		user.setIsBlocked(1);
-//		List<String> blockedUser=user.getUname();
-//		Long Id=currentUser.getId();
-//		blocklist.put(Id,blockedUser);
-//		userDao.save(user);
-//		System.out.println("ID for current Session"+Id);
-//		System.out.println("Blocked is Working");
-//		mav.addObject("blocklist", blocklist);
-//		mav.setViewName("Blocked");
-//		/*
-//		 * String ownerUser=(String)session.getAttribute("ownerUser"); Owner
-//		 * owner=homeservice.getOwnerByUser(ownerUser); int ownerid=owner.getU_id();
-//		 * List<Booking> ownerList= bookserv.showOwnerBookingList(ownerid);
-//		 */
-////		mav.setViewName("Blocked");
-//	//	return new ModelAndView("redirect:/Blocked");
-//		return mav;
-//	}
-//	@RequestMapping("/block") /* Gets the id of respective photo */
-//	public ModelAndView block(HttpSession session) {
-//		ModelAndView mav = new ModelAndView();
-//	//	List<RegisterUser> b = userDao.findAll();
-//		 System.out.println("Fetching Keys and corresponding [Multiple] Values n");
-//	        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-//	            String key = entry.getKey();
-//	            List<String> values = entry.getValue();
-//	            System.out.println("Key = " + key);
-//	            System.out.println("Values = " + values + "n");
-//	        }
-//		mav.addObject("blocklist", blocklist);
-//		mav.setViewName("Blocked");
-//		
-//		return mav;
-//	}
-HashMap<Long,List<String>> blocklist = new HashMap<Long, List<String>>();
 	
-	@RequestMapping("block/{username}") /* Gets the id of respective photo */
-	public ModelAndView block(HttpSession session, @PathVariable("username")String username) {
+	
+	Optional<RegisterUser> ll ;
+	final Set<String>userBlockedList=new HashSet<String>();
+	@RequestMapping("block/{username1}") 
+	public ModelAndView block(HttpSession session, @PathVariable("username1")String username1) {
 		ModelAndView mav = new ModelAndView();
-	
-		List<String> l=new ArrayList<>();
-		//List<RegisterUser> b =(List<RegisterUser>) userDao.findAllById(id);
-		RegisterUser user=userDao.findByUname(username);
-		RegisterUser currentUser=userDao.findByUname((String)session.getAttribute("username"));
-		
-		 
-		user.setIsBlocked(1);
-		String blockedUser=user.getUname();
-		l.add(blockedUser);
-		Long Id=currentUser.getId();
-		blocklist.put(Id,l);
-		userDao.save(user);
-		System.out.println("ID for current Session"+Id);
-		System.out.println("Blocked is Working");
-		mav.addObject("blocklist", blocklist);
-//		mav.setViewName("Blocked");
-		/*
-		 * String ownerUser=(String)session.getAttribute("ownerUser"); Owner
-		 * owner=homeservice.getOwnerByUser(ownerUser); int ownerid=owner.getU_id();
-		 * List<Booking> ownerList= bookserv.showOwnerBookingList(ownerid);
-		 */
-//		mav.setViewName("Blocked");
+		  String username=(String)session.getAttribute("username"); //getting username of looged in user
+          RegisterUser loggedInUser=userDao.findByUname(username); //geetings details using username
+          Long loggedin=loggedInUser.getId();		//gettingIdofLoggedUSer
+          RegisterUser user_id=userDao.findByUname(username1);
+          Long id=user_id.getId();
+          Optional<RegisterUser> user=userDao.findById(id); //
+          
+          loggedInUser.getBlocked().add(user.get());
+          userDao.save(loggedInUser);
+          Set<Long> blockedIdList=userDao.findBlockUsers(loggedin);
+          
+          Iterator i= blockedIdList.iterator();
+         	while(i.hasNext())  
+         		{  
+         		ll=userDao.findById(((BigInteger)i.next()).longValue());        
+         		userBlockedList.add(ll.get().getUname());
+         		}
+		mav.addObject("blocklist", userBlockedList);
 		return new ModelAndView("redirect:/block");
-		//return mav;
 	}
-	@RequestMapping("/block") /* Gets the id of respective photo */
-	public ModelAndView block(HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-	//	List<RegisterUser> b = userDao.findAll();
-		 Map<String ,List<String>> map=new HashMap<>();
-		 System.out.println("Fetching Keys and corresponding [Multiple] Values n");
-	        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-	            String key = entry.getKey();
-	            List<String> values = entry.getValue();
-	            System.out.println("Key = " + key);
-	            System.out.println("Values = " + values + "n");
-	        }
-		mav.addObject("blocklist", blocklist);
-		mav.setViewName("Blocked");
-		
-		return mav;
+	
+
 	}
 
-
-}

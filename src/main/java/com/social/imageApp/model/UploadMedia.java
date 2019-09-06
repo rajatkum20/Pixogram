@@ -1,19 +1,17 @@
 package com.social.imageApp.model;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 
@@ -27,6 +25,16 @@ public class UploadMedia {
 public UploadMedia() {
 		
 	}
+
+
+@ManyToOne()
+@JoinColumn(name="registeruser_id")
+private RegisterUser registerUser;
+
+@OneToMany(mappedBy = "uploadmedia",cascade = CascadeType.PERSIST)
+private Set<Comments> comments;
+
+
 	public UploadMedia(Long id, String title, String description, String tags, String username, boolean isblocked,
 			String encimg, byte[] pic) {
 		

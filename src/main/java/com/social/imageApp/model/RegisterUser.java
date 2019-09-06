@@ -1,6 +1,6 @@
 package com.social.imageApp.model;
 
-import java.util.List;
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,10 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "RegisterUser1")
@@ -36,21 +34,58 @@ public  class RegisterUser  {
 	}
 	@Column(name = "uname")
 	private String uname;
+	
 	private String psw;
+	
 	private int isBlocked=0;
+	
+	
+	@OneToMany(mappedBy = "registerUser",cascade = CascadeType.PERSIST)
+	private Set<Comments> comments;
+	
+	@OneToMany(mappedBy= "registerUser" ,cascade=CascadeType.PERSIST)
+	private Set<UploadMedia> uploadmedia;
+	
 	 @ManyToMany(fetch = FetchType.EAGER)
 	    @JoinTable(name = "relation",
 	                joinColumns = @JoinColumn(name = "user_id"),
 	                inverseJoinColumns = @JoinColumn(name = "following_id"))
 	    private Set<RegisterUser> following;
 
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="block",
+	joinColumns = @JoinColumn(name="user_id"),
+	inverseJoinColumns = @JoinColumn(name="blocked_id"))
+	private Set<RegisterUser> blocked;
+	
+	
+	 
 
-	/*
-	 * public List<RegisterUser> getFollowing() { return following; }
-	 * 
-	 * public void setFollowing(List<RegisterUser> following) { this.following =
-	 * following; }
-	 */
+	
+	public Set<Comments> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<Comments> comments) {
+		this.comments = comments;
+	}
+
+	public Set<UploadMedia> getUploadmedia() {
+		return uploadmedia;
+	}
+
+	public void setUploadmedia(Set<UploadMedia> uploadmedia) {
+		this.uploadmedia = uploadmedia;
+	}
+
+	public Set<RegisterUser> getBlocked() {
+		return blocked;
+	}
+
+	public void setBlocked(Set<RegisterUser> blocked) {
+		this.blocked = blocked;
+	}
+
 	public int getIsBlocked() {
 		return isBlocked;
 	}
