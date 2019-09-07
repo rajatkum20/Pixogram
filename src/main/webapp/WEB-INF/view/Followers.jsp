@@ -20,13 +20,13 @@
     display: block;
 }
  </style>
-<body style="background-image: url(images/image3.jpg);  background-size: cover">
+<body style="background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);  height:50vw;">
 <div class="col-lg-12 col-md-12 col sm-12" > <img src="${pageContext.request.contextPath}/images/p.svg" width=150px; class="responsive"
   height=120px;>
   <button  type="button" class="btn btn-secondary" style="margin-left:25%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;" ><a href="/uploadmedianew" style="color: white;text-decoration:none;">Upload Media</a></button>
   <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/mymediapic "style="color: white;text-decoration:none;">My Media</a></button>
-  <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/Follow"style="color: white;text-decoration:none;">Followers/Followings</a></button>
-  <button type="button" class="btn btn-secondary "  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/ActivityNewsFeed" style="color: white;text-decoration:none;">Account</a></button>
+  <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/followers"style="color: white;text-decoration:none;">Followings</a></button>
+  <button type="button" class="btn btn-secondary "  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/block" style="color: white;text-decoration:none;">Account</a></button>
   <!--<a (click)="logout()">logout</a>-->
   
   <div class="profile"><img src="${pageContext.request.contextPath}/images/profile.png" width=150px; 
@@ -34,8 +34,7 @@
         </div>
         <div class="btn-group" style="float: right;"role="group" aria-label="Basic example">
            
-            <button type="button" class="btn btn-secondary">FOLLOWINGS</button>
-            
+       <a href="/Follow">  <button type="button" class="btn btn-secondary">All Users</button></a>
           </div>
      <br>
         
@@ -50,7 +49,7 @@
   <div class="card-body"style="width:300px;height:150px;">
     
   </div>
-   <p><center>${d.uname}</center></p>
+   <a href="<c:url value='/profile/${d.uname}'/>"><p><center>${d.uname}</center></p></a>
    
      
   <div class="card-footer"><div class="btn-group" role="group" aria-label="Basic example" style="margin-left: 4%;">

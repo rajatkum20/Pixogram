@@ -79,7 +79,7 @@ display: block;
   <button  type="button" class="btn btn-secondary" style="margin-left:25%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;" ><a href="#" style="color: white;text-decoration:none;">Upload Media</a></button>
   <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="#" style="color: white;text-decoration:none;">My Media</a></button>
   <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="#" style="color: white;text-decoration:none;">Followers/Followings</a></button>
-  <button type="button" class="btn btn-secondary "  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/activitynewsfeed" style="color: white;text-decoration:none;">Account</a></button>
+  <button type="button" class="btn btn-secondary "  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/block" style="color: white;text-decoration:none;">Account</a></button>
   <!--<a (click)="logout()">logout</a>-->
  
      </div>     

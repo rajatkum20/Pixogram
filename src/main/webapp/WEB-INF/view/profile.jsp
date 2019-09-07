@@ -23,12 +23,12 @@
     display: block;
 }
 </style>
-<body style="background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);  background-size: cover">
+<body style="background-image: url(images/image3.jpg);  background-size: cover">
 <div class="col-lg-12 col-md-12 col sm-12" > <img src="${pageContext.request.contextPath}/images/p.svg" width=150px; class="responsive"
   height=120px;>
   <button  type="button" class="btn btn-secondary" style="margin-left:25%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;" ><a href="/uploadmedianew" style="color: white;text-decoration:none;">Upload Media</a></button>
   <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/mymediapic"style="color: white;text-decoration:none;">My Media</a></button>
-  <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/followers"style="color: white;text-decoration:none;">Followings</a></button>
+  <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/Follow"style="color: white;text-decoration:none;">Followers/Followings</a></button>
   <button type="button" class="btn btn-secondary "  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/block" style="color: white;text-decoration:none;">Account</a></button>
   <!--<a (click)="logout()">logout</a>-->
 
@@ -43,6 +43,9 @@ height=150px;><h3 style="margin-left: 150px;margin-top: -70px; "> ${username}</h
  <br>
     
     <hr>
+    <div class="profile"><img src="${pageContext.request.contextPath}/images/profile.png" width=150px; 
+height=150px;><h3 style="margin-left: 150px;margin-top: -70px; "> ${user}</h3>
+    </div>
     <div class="row">
     	<c:forEach var="d" items="${data}">
 		
@@ -54,14 +57,14 @@ height=150px;><h3 style="margin-left: 150px;margin-top: -70px; "> ${username}</h
 thumb_up_alt
 </i><i class="material-icons">
 thumb_down_alt
-
+<!-- <p>${d.title }</p> -->
 </i>
 <i class="material-icons" style="float:right;">
 mode_comment
 </i></div>
-<a href="Media"><div class="card-body"style="width:300px;height:200px;">
+<a href="Media"><div class="card-body"style="width:300px;height:150px;">
 
-<a href="<c:url value='/showphoto/${d.id}'/>"><img src="data:images/jpg;base64,${d.encimg}" style="width:200px;height:150px;"></a>
+<a href="<c:url value='/getcomments/${d.id}'/>"><img src="data:images/jpg;base64,${d.encimg}" style="width:200px;height:100px;"></a>
 
 
 </div></a>

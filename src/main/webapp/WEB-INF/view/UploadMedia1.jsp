@@ -92,7 +92,7 @@ font-family: cursive;
 background-color:black;
 }
 </style>
-<body style="background-image: url(images/image3.jpg);  background-size: cover">
+<body style="background-image: url(images/image3.png);  background-size: cover">
  
         
 <div class="col-lg-12 col-md-12 col sm-12" > <img src="${pageContext.request.contextPath}/images/p.svg" width=150px; class="responsive"
@@ -100,13 +100,13 @@ background-color:black;
   <button  type="button" class="btn btn-secondary" style="margin-left:25%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;" ><a href="#" style="color: white;text-decoration:none;">Upload Media</a></button>
   <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/mymediapic "style="color: white;text-decoration:none;">My Media</a></button>
   <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/Follow"style="color: white;text-decoration:none;">Followers/Followings</a></button>
-  <button type="button" class="btn btn-secondary "  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/ActivityNewsFeed" style="color: white;text-decoration:none;">Account</a></button>
+  <button type="button" class="btn btn-secondary "  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/block" style="color: white;text-decoration:none;">Account</a></button>
   <!--<a (click)="logout()">logout</a>-->
  
      </div>     
-<div class="profile"><img src="data:images/jpg;base64,${firstpic.encimg}" width=150px;
-  height=150px;><h3 style="margin-left: 150px;margin-top: -70px; ">${username}</h3>
-      </div>
+<div class="profile"><img src="${pageContext.request.contextPath}/images/profile.png" width=150px;
+    height=150px;><h3 style="margin-left: 150px;margin-top: -70px; ">${username}</h3>
+    </div>
       <div class="btn-group" style="float: right;"role="group" aria-label="Basic example">
         <button type="button" class="btn btn-secondary">Single</button>
         <button type="button" class="btn btn-secondary">Multi</button>

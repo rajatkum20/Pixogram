@@ -95,7 +95,7 @@ padding: 3em 5em 3em 3em;
   <button  type="button" class="btn btn-secondary" style="margin-left:25%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;" ><a href="/uploadmedianew" style="color: white;text-decoration:none;">Upload Media</a></button>
   <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/mymediapic"style="color: white;text-decoration:none;">My Media</a></button>
   <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/Follow"style="color: white;text-decoration:none;">Followers/Followings</a></button>
-  <button type="button" class="btn btn-secondary "  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/ActivityNewsFeed" style="color: white;text-decoration:none;">Account</a></button>
+  <button type="button" class="btn btn-secondary "  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/block" style="color: white;text-decoration:none;">Account</a></button>
   <!--<a (click)="logout()">logout</a>-->
   
 <div class="profile"><img src="${pageContext.request.contextPath}/images/profile.png" width=150px; 
@@ -112,7 +112,7 @@ padding: 3em 5em 3em 3em;
         <div class="account">
           <h1>ACCOUNT</h1>
             <br>
-            <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/ActivityNewsFeed" style="color: white;text-decoration:none;">Newsfeed</a></button>
+            
 <button type="button" class="btn btn-secondary btn-lg btn-block">Blocked Account</button>
 <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/AccountUpdate" style="color: white;text-decoration:none;">Account Update</a></button>
 <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/Search" style="color: white;text-decoration:none;">Search</a></button>

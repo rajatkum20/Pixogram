@@ -126,7 +126,7 @@ span.psw {
   <button  type="button" class="btn btn-secondary" style="margin-left:25%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;" ><a href="/uploadmedianew" style="color: white;text-decoration:none;">Upload Media</a></button>
   <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/mymediapic "style="color: white;text-decoration:none;">My Media</a></button>
   <button type="button" class="btn btn-secondary  "style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/Follow"style="color: white;text-decoration:none;">Followers/Followings</a></button>
-  <button type="button" class="btn btn-secondary "  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/ActivityNewsFeed" style="color: white;text-decoration:none;">Account</a></button>
+  <button type="button" class="btn btn-secondary "  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/block" style="color: white;text-decoration:none;">Account</a></button>
   <!--<a (click)="logout()">logout</a>-->
   
 <div class="profile"><img src="${pageContext.request.contextPath}/images/profile.png" width=150px; 
@@ -144,7 +144,6 @@ span.psw {
         <div class="account">
             <h1>ACCOUNT</h1>
             <br>
-            <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/ActivityNewsFeed"style="color: white;text-decoration:none;">Newsfeed</a></button>
 <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/block" style="color: white;text-decoration:none;">Blocked Account</a></button>
 <button type="button" class="btn btn-secondary btn-lg btn-block">Account Update</button>
 <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="/Search" style="color: white;text-decoration:none;">Search</a></button>
@@ -153,24 +152,20 @@ span.psw {
 </div> 
        
             <div class="formm">
-          <form>
-            <div class="container">
+<form:form method="POST" modelAttribute="update" action="/AccountUpdate" class="form-signin">          
+  <div class="container">
                     
               <label for="uname"><b>Username</b></label>
-              <input type="text" placeholder="Enter Username" name="uname" required>
-          
+              <form:input type="text" placeholder="Enter Username" path="uname" ></form:input>
               <label for="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required>
-              <label for="rpsw"><b> Repeat Password</b></label>
-              <input type="password" placeholder="Enter Password" name="rpsw" required>
-              <button type="submit" class="btn btn-secondary">check</button><br><br>
+              <form:input type="password" placeholder="Enter Password" path="psw" ></form:input>
               <label for="email"><b>Email</b></label>
-              <input type="email" placeholder="Email" name="email" required>
-              <button type="submit" class="btn btn-secondary">Update</button>
+              <form:input type="email" placeholder="Email" path="email" ></form:input>
+              <button type="submit" class="btn btn-dark">Update</button>
              
               
             </div>
-          </form>
+          </form:form>
           </div>
 
 </body>

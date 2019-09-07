@@ -26,14 +26,26 @@ public class Comments {
 	
 	private String comment;
 	
+	private String username;
 
-    public int compareTo(Comments comment2){
+
+	public int compareTo(Comments comment2){
         return (int)(comment2.getComment_id()- this.comment_id);
     }
 
 
 	public Long getComment_id() {
 		return comment_id;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 

@@ -43,8 +43,6 @@ public  class RegisterUser  {
 	@OneToMany(mappedBy = "registerUser",cascade = CascadeType.PERSIST)
 	private Set<Comments> comments;
 	
-	@OneToMany(mappedBy= "registerUser" ,cascade=CascadeType.PERSIST)
-	private Set<UploadMedia> uploadmedia;
 	
 	 @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
 	    @JoinTable(name = "relation",
@@ -59,9 +57,6 @@ public  class RegisterUser  {
 	private Set<RegisterUser> blocked;
 	
 	
-	 
-
-	
 	public Set<Comments> getComments() {
 		return comments;
 	}
@@ -70,13 +65,6 @@ public  class RegisterUser  {
 		this.comments = comments;
 	}
 
-	public Set<UploadMedia> getUploadmedia() {
-		return uploadmedia;
-	}
-
-	public void setUploadmedia(Set<UploadMedia> uploadmedia) {
-		this.uploadmedia = uploadmedia;
-	}
 
 	public Set<RegisterUser> getBlocked() {
 		return blocked;

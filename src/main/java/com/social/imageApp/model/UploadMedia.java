@@ -27,10 +27,6 @@ public UploadMedia() {
 	}
 
 
-@ManyToOne()
-@JoinColumn(name="registeruser_id")
-private RegisterUser registerUser;
-
 @OneToMany(mappedBy = "uploadmedia",cascade = CascadeType.PERSIST)
 private Set<Comments> comments;
 

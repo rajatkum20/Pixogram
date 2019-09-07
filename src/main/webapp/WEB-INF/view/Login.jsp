@@ -28,17 +28,27 @@ hr{
     border-style: inset;
  
 }
-form {border: 3px solid #f1f1f1;
+form {/*border: 3px solid #f1f1f1; */
 width:500px;
-margin-left: 50%;}
+margin-top:10%;
+margin-left: 50%;
+}
 
 input[type=text], input[type=password] {
 width: 100%;
 padding: 12px 20px;
 margin: 8px 0;
 display: inline-block;
-border: 2px solid black;
-box-sizing: border-box;
+/* border: 2px solid black; */
+/* box-sizing: border-box; */
+/* WebKit browsers */
+		font-family: 'Source Sans Pro', sans-serif;
+			color:    white;
+		font-weight: 300;
+	font-family: 'Source Sans Pro', sans-serif;
+		 color:    white;
+		 opacity:  1;
+		font-weight: 300;
 }
 
 
@@ -61,37 +71,48 @@ padding-top: 16px;
 }
 .account
 {
+margin-top:10%;
   float:left;
   width:300px;
   margin-left: 100px;
-  font-family: cursive;
+
+}
+body
+{
+	background: #50a3a2;
+background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+background: -moz-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+background: -o-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+height:50vw;
 }
 .profile
 {
   display: block;
 }</style>
-<body style="background-image: url(images/image3.jpg);  background-size: cover">
+<body >
     <div class="col-lg-12 col-md-12 col sm-12" > <img src="images/p.svg" width=150px; class="responsive"
   height=120px;>
-  <button  type="button" class="btn btn-secondary" style="margin-left:25%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;" ><a href="#" style="color: white;text-decoration:none;">Upload Media</a></button>
-  <button type="button" class="btn btn-secondary" style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="#" style="color: white;text-decoration:none;">My Media</a></button>
-  <button type="button" class="btn btn-secondary" style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="#" style="color: white;text-decoration:none;">Followers/Followings</a></button>
-  <button type="button" class="btn btn-secondary"  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/activitynewsfeed" style="color: white;text-decoration:none;">Account</a></button>
+  <button  type="button" class="btn btn-dark" style="margin-left:25%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;" ><a href="#" style="color: white;text-decoration:none;">Upload Media</a></button>
+  <button type="button" class="btn btn-dark" style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="#" style="color: white;text-decoration:none;">My Media</a></button>
+  <button type="button" class="btn btn-dark" style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="#" style="color: white;text-decoration:none;">Followers/Followings</a></button>
+  <button type="button" class="btn btn-dark"  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/block" style="color: white;text-decoration:none;">Account</a></button>
   <!--<a (click)="logout()">logout</a>-->
  
      </div>   
  <br>
       <hr>
       <div class="account">
-        <h1 style="margin-left: 20%">ACCOUNT</h1>
+        <h1 style="margin-left: 20%">Account</h1>
         <br>
-        <button type="button" class="btn btn-secondary btn-lg btn-block">LOGIN</button>
-        <button type="button" class="btn btn-secondary btn-lg btn-block"><a href="${contextPath}/registration" style="color: white;text-decoration:none;">REGISTRATION</a></button>
+        <button type="button" class="btn btn-dark btn-lg btn-block">LOGIN</button>
+        <button type="button" class="btn btn-dark btn-lg btn-block"><a href="${contextPath}/registration" style="color: white;text-decoration:none;">REGISTRATION</a></button>
       </div>
      
         
 <form method="POST" action="loginentry" class="form-signin" >
-        <h3>Login</h3>
+        <h1>Login</h1>
+        <br>
   <label for="uname"><b>Username</b></label>
 
   <input type="text" placeholder="Enter Username" name="uname"  class="form-control" />
@@ -101,9 +122,10 @@ padding-top: 16px;
    <span>${error}</span>
    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
    
-  <button type="submit" [disabled]="loading" class="btn btn-secondary" ><span  class="spinner-border spinner-border-sm mr-1"></span>Login</button>
+  <button type="submit" [disabled]="loading" class="btn btn-dark" ><span  class="spinner-border spinner-border-sm mr-1"></span>Login</button>
   
-
+<br>
+<br>
 <div class="container" style="background-color:#f1f1f1">
   <button type="button" class="cancelbtn"><a href="Login" style="color: white;text-decoration:none;">Cancel</a></button>
   <span class="psw">Forgot <a href="#">password?</a></span>

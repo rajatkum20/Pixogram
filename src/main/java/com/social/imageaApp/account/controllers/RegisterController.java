@@ -56,9 +56,7 @@ public class RegisterController {
 	public ModelAndView addUser(@ModelAttribute("register") RegisterUser registeruser)
 	{
 		ModelAndView mv=new ModelAndView();
-		System.out.println(registeruser.getEmail()+"Email");
-		System.out.println(registeruser.getPsw()+"pass");
-		System.out.println(registeruser.getUname()+"Username");
+		
 		userDao.save(registeruser);
 		System.out.println("Registration Successful");
 		mv.addObject("uploadmedia",new com.social.imageApp.model.UploadMedia());

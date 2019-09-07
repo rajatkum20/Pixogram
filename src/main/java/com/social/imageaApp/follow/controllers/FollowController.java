@@ -39,7 +39,6 @@ public class FollowController {
 
 	Set<Long> useridList=new HashSet<Long>();
 	Optional<RegisterUser> ll ;
-	Set<String> listUsers=new HashSet<String>();
 	List<RegisterUser> followers=new ArrayList<RegisterUser>();
 	final List<String>userNamelist=new ArrayList<String>();
 	@ModelAttribute
@@ -51,7 +50,7 @@ public class FollowController {
                     String username=(String)session.getAttribute("username");
                     List<RegisterUser> data=userDao.findAll();
                    	Iterator<RegisterUser> iter=data.iterator();
-                   	Iterator<String> iter2=listUsers.iterator();
+                   	Iterator<RegisterUser> iter3=data.iterator();
                    	          
                     	
                     	RegisterUser loggedInUser=userDao.findByUname(username);
@@ -62,12 +61,6 @@ public class FollowController {
                     	
                     	List<RegisterUser> blockedUsers=userDao.findAllById(userBlockList);
                     	
-                    	for(int i=0;i<blockedUsers.size();i++)
-                    	{
-                    		String temp=blockedUsers.get(i).getUname();
-                    	           		listUsers.add(temp);
-                    	 }               	
-                    	
                     	while(iter.hasNext())
                     	{
                                        		RegisterUser currentuser=iter.next();
@@ -77,19 +70,14 @@ public class FollowController {
                     			iter.remove();
                     		}
                     	}
-                    
-                    	
-                    	
-                    	
-                    	
-                    	mav.addObject("username",username);
+                    mav.addObject("username",username);
                     	followers=userDao.findAllById(useridList);
                         mav.addObject("data", data);
                 
                     mav.setViewName("Follow");
                     return mav;                        
     }
-	
+	@ModelAttribute
 	@RequestMapping("/followers/{id}")
 	public ModelAndView followw(HttpSession session,@PathVariable("id") Long id,ModelMap map) 
     {
@@ -107,11 +95,7 @@ public class FollowController {
                    	Iterator i= useridList.iterator();
                    
                    	
-              
-		/*
-		 * while(i.hasNext()) { ll=userDao.findById(i);
-		 * userNamelist.add(ll.get().getUname()); }
-		 */
+     
               	 Iterator<Long> iter = null; 
               	 iter=useridList.iterator();
               	 mav.addObject("data",followers);

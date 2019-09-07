@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.social.imageApp.model.Comments;
 import com.social.imageApp.model.RegisterUser;
 import com.social.imageApp.model.UploadMedia;
 import com.social.imageaApp.dao.ImageDao;
@@ -43,7 +44,7 @@ public class MyMediaController {
                    // List<RegisterUser> databyusername=(List<RegisterUser>) userDao.findByUname(username);
                     mav.addObject("username",username);
                     mav.addObject("data", data);
-             
+                    mav.addObject("commentsDatamedia",new Comments());
                 
                     mav.setViewName("MyMedia");
                     return mav;                        

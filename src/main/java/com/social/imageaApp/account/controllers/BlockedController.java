@@ -50,6 +50,10 @@ public class BlockedController {
           Optional<RegisterUser> user=userDao.findById(id); //
           
           loggedInUser.getBlocked().add(user.get());
+          if(loggedInUser.getFollowing().contains(user.get()))
+          {        		
+          loggedInUser.getFollowing().remove(user.get());
+          }
           userDao.save(loggedInUser);
           BlockedList= userDao.findBlockUsers(loggedin);         
           
@@ -83,6 +87,7 @@ public class BlockedController {
         Long loggedin=loggedInUser.getId();		//gettingIdofLoggedUSer
         Optional<RegisterUser> user=userDao.findById(id);
         loggedInUser.getBlocked().remove(user.get());
+      
         userDao.save(loggedInUser);
 		return new ModelAndView("redirect:/block");
 		
