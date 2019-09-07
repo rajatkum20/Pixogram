@@ -41,11 +41,13 @@ public class CommentController {
 	
 	
 	Long photoid=(long) 0;
+	String profile_photo=new String();
 	Set<Long> userid=new HashSet<Long>();
 	@RequestMapping("/profile/{visiteduser}")
 	public ModelAndView profile(HttpSession session,@PathVariable("visiteduser") String name)
 	{
 		ModelAndView mav=new ModelAndView();
+		profile_photo=name;
 		   List<UploadMedia> data=imageDao.findByUsername(name);
 		 mav.addObject("user",name);
 		 mav.addObject("data", data);

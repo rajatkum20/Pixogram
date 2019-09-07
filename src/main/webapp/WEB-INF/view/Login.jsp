@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Pixogram</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="Styles/Login.css">
 </head>
@@ -30,7 +30,7 @@ hr{
 }
 form {/*border: 3px solid #f1f1f1; */
 width:500px;
-margin-top:10%;
+margin-top:7%;
 margin-left: 50%;
 }
 
@@ -43,10 +43,10 @@ display: inline-block;
 /* box-sizing: border-box; */
 /* WebKit browsers */
 		font-family: 'Source Sans Pro', sans-serif;
-			color:    white;
+			
 		font-weight: 300;
 	font-family: 'Source Sans Pro', sans-serif;
-		 color:    white;
+		
 		 opacity:  1;
 		font-weight: 300;
 }
@@ -71,7 +71,7 @@ padding-top: 16px;
 }
 .account
 {
-margin-top:10%;
+margin-top:7%;
   float:left;
   width:300px;
   margin-left: 100px;
@@ -93,7 +93,8 @@ height:50vw;
 <body >
     <div class="col-lg-12 col-md-12 col sm-12" > <img src="images/p.svg" width=150px; class="responsive"
   height=120px;>
-  <button  type="button" class="btn btn-dark" style="margin-left:25%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;" ><a href="#" style="color: white;text-decoration:none;">Upload Media</a></button>
+  <center><b><h1>Welcome to Pixogram</h1></b></center>
+  <button  type="button" class="btn btn-dark" style="margin-left:32%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;" ><a href="#" style="color: white;text-decoration:none;">Upload Media</a></button>
   <button type="button" class="btn btn-dark" style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="#" style="color: white;text-decoration:none;">My Media</a></button>
   <button type="button" class="btn btn-dark" style="margin-left:0.5%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="#" style="color: white;text-decoration:none;">Followers/Followings</a></button>
   <button type="button" class="btn btn-dark"  style="position: absolute;right:0; top: 30px;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;"><a href="/block" style="color: white;text-decoration:none;">Account</a></button>

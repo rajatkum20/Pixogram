@@ -18,7 +18,7 @@ import antlr.collections.List;
 public interface UserDao extends JpaRepository<RegisterUser, Long>{
 
 	@Query(value = "select r.following_id from relation r where r.user_id=:id",nativeQuery = true)
-	public Set<Long> findUsers(Long id);
+	public Set<Long> findFollowingUsers(Long id);
 	
 	@Query(value = "select r.blocked_id from block r where r.user_id=:id",nativeQuery = true)
 	public Set<Long> findBlockUsers(Long id);

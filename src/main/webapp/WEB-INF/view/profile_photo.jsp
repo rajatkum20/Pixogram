@@ -73,9 +73,9 @@ padding:8px;
 
 <div class="profile"><img src="${pageContext.request.contextPath}/images/profile.png" width=150px; 
 height=150px;><h3 style="margin-left: 150px;margin-top: -70px;">${username}</h3>
-<a href="loginentry"><button type="button" class="btn btn-dark" style="margin-left:300px; margin-top:-10%">Go To My Media</button></a>
+<a href="<c:url value='/profile/${username}'/>"><button type="button" class="btn btn-dark" style=" margin-left:60%;">Go To My Media</button></a>
     </div>
-    </div>
+    
  <br>
     
     <hr>
@@ -110,6 +110,8 @@ height=50px; style="margin-left: 7%;"><h1>${photo.title }</h1>
 
 <a href="<c:url value='/deletecomm/${d.comment_id}'/>"><button type="button" class="btn btn-dark" style="margin-left:300px; margin-top:-10%">delete comment</button></a>
 <br>
+
+
 </c:forEach>
 <div class="row">
 

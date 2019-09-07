@@ -90,41 +90,7 @@ public class RegisterController {
 			return mav;
 	}
 	}
-//	 public String LoginForm(Model model) {
-//	 model.addAttribute("userForm", new LoginUser());
-//	System.out.println("lOGINwORKS");
-//	 return "Login";
-//	 }
-	 /*
-	 * @PostMapping("/Register") public String
-	 * registration(@Valid @ModelAttribute("userForm") RegisterUser userForm,
-	 * BindingResult bindingResult) { userValidator.validate(userForm,
-	 * bindingResult);
-	 * 
-	 * if (bindingResult.hasErrors()) { return "Register"; }
-	 * 
-	 * userService.save(userForm);
-	 * 
-	 * securityService.autoLogin(userForm.getUname(), userForm.getRpsw());
-	 * 
-	 * return "redirect:/UploadMedia"; }
-	 */
-	
-//	    @RequestMapping(value="userlogin",method = RequestMethod.POST)
-//	    public ModelAndView loginAuth(Model model,@RequestParam("uname") String uname, @RequestParam("psw") String psw,Model model11,HttpServletRequest request)
-//	    {
-//	    	ModelAndView mc=new ModelAndView();
-//	    	LoginUser user=userService.findByUnameAndPsw(uname, psw);
-//			if(user!=null)
-//			{
-//				System.out.println("User Logged");
-//				mc.addObject("uname",uname);
-//				mc.setViewName("UploadMultiMedia");
-//				return mc;
-//			}
-//			return mc;
-//	    }
-//	    
+	    
 	
 
 	    @GetMapping({"/"})

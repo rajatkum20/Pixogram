@@ -56,15 +56,19 @@ thumb_up_alt
 thumb_down_alt
 
 </i>
-<i class="material-icons" style="float:right;">
+<a href="<c:url value='/showphoto/${d.id}'/>" style="color: white;text-decoration:none;"><i class="material-icons" style="float:right;">
 mode_comment
-</i></div>
+</i>
+</a>
+</div>
+
 <a href="Media"><div class="card-body"style="width:300px;height:200px;">
 
 <a href="<c:url value='/showphoto/${d.id}'/>"><img src="data:images/jpg;base64,${d.encimg}" style="width:200px;height:150px;"></a>
 
 
 </div></a>
+<center><p>Click on Image </p></center>
 </div>
 
 </c:forEach>

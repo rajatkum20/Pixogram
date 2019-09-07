@@ -48,31 +48,33 @@ public class FollowController {
 		
                     ModelAndView mav = new ModelAndView();
                     String username=(String)session.getAttribute("username");
+                    RegisterUser loggedInUser=userDao.findByUname(username);
+                	Long loggedin=loggedInUser.getId();
+                	useridList= userDao.findFollowingUsers(loggedin);
                     List<RegisterUser> data=userDao.findAll();
+                    Set<Long>userBlockList=userDao.findBlockUsers(loggedin);
+                    List<RegisterUser> blockedUsers=userDao.findAllById(userBlockList);
                    	Iterator<RegisterUser> iter=data.iterator();
-                   	Iterator<RegisterUser> iter3=data.iterator();
-                   	          
-                    	
-                    	RegisterUser loggedInUser=userDao.findByUname(username);
-                    	Long loggedin=loggedInUser.getId();
-                    	useridList= userDao.findUsers(loggedin);
-                    	
-                    	Set<Long>userBlockList=userDao.findBlockUsers(loggedin);
-                    	
-                    	List<RegisterUser> blockedUsers=userDao.findAllById(userBlockList);
-                    	
-                    	while(iter.hasNext())
-                    	{
-                                       		RegisterUser currentuser=iter.next();
-                    		if(currentuser.getUname().contains(username))
-                    		
-                    		{
-                    			iter.remove();
-                    		}
-                    	}
+                                      	       
+                   	List<Long> list1=new ArrayList<Long>();
+                   	List<Long> list2=new ArrayList<Long>();
+                   	for(int i=0;i<data.size();i++)
+                   	{
+                   	list1.add(data.get(i).getId());
+                   	}
+                	for(int i=0;i<blockedUsers.size();i++)
+                   	{
+                   	list2.add(blockedUsers.get(i).getId());
+                   	}
+                	list1.removeAll(list2);
+                	list1.remove(loggedin);
+                	List<RegisterUser> userwithblock=userDao.findAllById(list1);
+              
+                    
+		
                     mav.addObject("username",username);
                     	followers=userDao.findAllById(useridList);
-                        mav.addObject("data", data);
+                        mav.addObject("data", userwithblock);
                 
                     mav.setViewName("Follow");
                     return mav;                        
@@ -89,12 +91,10 @@ public class FollowController {
                     Optional<RegisterUser> user=userDao.findById(id); //
                     loggedInUser.getFollowing().add(user.get());
                     userDao.save(loggedInUser);
-                   	useridList= userDao.findUsers(loggedin);
+                   	useridList= userDao.findFollowingUsers(loggedin);
                    	
                    	followers=userDao.findAllById(useridList);
-                   	Iterator i= useridList.iterator();
-                   
-                   	
+                                  	
      
               	 Iterator<Long> iter = null; 
               	 iter=useridList.iterator();
@@ -105,7 +105,7 @@ public class FollowController {
 
     }
 	@RequestMapping("/followers")
-	@ModelAttribute
+	
 	public ModelAndView openFollowers(HttpServletRequest request, HttpServletResponse res) {
 		System.out.println("Followers");
 		ModelAndView mav = new ModelAndView();

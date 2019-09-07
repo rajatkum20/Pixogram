@@ -48,9 +48,10 @@
 </div>
   <div class="card-body"style="width:300px;height:150px;">
     
-  </div>
-   <a href="<c:url value='/profile/${d.uname}'/>"><p><center>${d.uname}</center></p></a>
-   
+ <p>Click on Username to<br> vist profile </p>
+ <center>  <a href="<c:url value='/profile/${d.uname}'/>" style="color: white;text-decoration:none;"><h3>${d.uname}<h3></a></center>
+
+   </div>
      
   <div class="card-footer"><div class="btn-group" role="group" aria-label="Basic example" style="margin-left: 4%;">
  

@@ -120,7 +120,7 @@ span.psw {
     display: block;
 }
    </style>
-<body style="background-image: url(images/image3.jpg);  background-size: cover">
+<body style="background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%); height:50vw;">
 <div class="col-lg-12 col-md-12 col sm-12" > <img src="${pageContext.request.contextPath}/images/p.svg" width=150px; class="responsive"
   height=120px;>
   <button  type="button" class="btn btn-secondary" style="margin-left:25%;width: 200px; border-radius: 10px; box-shadow: 5px 10px #888888;" ><a href="/uploadmedianew" style="color: white;text-decoration:none;">Upload Media</a></button>
